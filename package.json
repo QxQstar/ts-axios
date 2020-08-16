@@ -1,15 +1,15 @@
 {
-  "name": "--libraryname--",
+  "name": "ts-axios",
   "version": "0.0.0",
   "description": "",
   "keywords": [],
-  "main": "dist/--libraryname--.umd.js",
-  "module": "dist/--libraryname--.es5.js",
-  "typings": "dist/types/--libraryname--.d.ts",
+  "main": "dist/ts-axios.umd.js",
+  "module": "dist/ts-axios.es5.js",
+  "typings": "dist/types/ts-axios.d.ts",
   "files": [
     "dist"
   ],
-  "author": "--username-- <--usermail-->",
+  "author": "何遇<1395294694@qq.com>",
   "repository": {
     "type": "git",
     "url": ""
