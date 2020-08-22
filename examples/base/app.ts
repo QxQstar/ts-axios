@@ -67,10 +67,20 @@ axios({
     a:'a',
     b:'b'
   }
+}).then((res) => {
+  console.log(res,'ree')
 })
 
 axios({
   url:'/base/buffer',
   method: 'post',
   data:new Int32Array([100,200])
+})
+
+axios({
+  url:'/base/post',
+  method:'post',
+  data: new URLSearchParams('a=8&b=9')
+}).then((res) => {
+  console.log(res,'url')
 })
