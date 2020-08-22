@@ -1,4 +1,5 @@
 import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from './types'
+import { parseHeaders } from './helpers/headers'
 
 export default function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
@@ -18,7 +19,7 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
         statusText: xhr.statusText,
         request: xhr,
         data: responseData,
-        headers: xhr.getAllResponseHeaders(),
+        headers: parseHeaders(xhr.getAllResponseHeaders()),
         config
       }
 
