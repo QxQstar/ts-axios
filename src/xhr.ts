@@ -3,16 +3,23 @@ import { parseHeaders } from './helpers/headers'
 
 export default function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
-    const { url, method = 'get', data = null, headers, responseType } = config
+    const { url, method = 'get', data = null, headers, responseType, timeout } = config
     const xhr = new XMLHttpRequest()
     if (responseType) {
       xhr.responseType = responseType
+    }
+    if (timeout) {
+      xhr.timeout = timeout
     }
     xhr.open(method.toUpperCase(), url, true)
     xhr.onreadystatechange = function() {
       if (xhr.readyState !== 4) {
         return
       }
+      if (xhr.status === 0) {
+        return
+      }
+
       const responseData = responseType && responseType !== 'text' ? xhr.response : xhr.responseText
       const response: AxiosResponse = {
         status: xhr.status,
@@ -22,9 +29,24 @@ export default function xhr(config: AxiosRequestConfig): AxiosPromise {
         headers: parseHeaders(xhr.getAllResponseHeaders()),
         config
       }
-
-      resolve(response)
+      handleResponse(response)
     }
+    function handleResponse(response: AxiosResponse): void {
+      if (response.status >= 200 && response.status < 300) {
+        resolve(response)
+      } else {
+        reject(new Error(`Request failed with status code ${response.status}`))
+      }
+    }
+
+    xhr.onerror = function() {
+      reject(new Error('Network Error'))
+    }
+
+    xhr.ontimeout = function() {
+      reject(new Error(`Timeout of ${timeout} ms exceeded`))
+    }
+
     Object.keys(headers).forEach(name => {
       if (data === null && name.toLowerCase() === 'content-type') {
         delete headers[name]

@@ -84,3 +84,9 @@ axios({
 }).then((res) => {
   console.log(res,'url')
 })
+
+axios({
+  url:'/dd'
+}).catch((err) => {
+  console.log(err)
+})
