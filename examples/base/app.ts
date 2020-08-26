@@ -1,4 +1,4 @@
-import axios from '../../src/index'
+import axios,{AxiosError} from '../../src/index'
 
 // axios({
 //   url:'/base/get',
@@ -87,6 +87,6 @@ axios({
 
 axios({
   url:'/dd'
-}).catch((err) => {
+}).catch((err: AxiosError) => {
   console.log(err)
 })
