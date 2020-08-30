@@ -38,6 +38,46 @@ router.post('/base/buffer', function(req, res) {
   })
 })
 
+router.post('/extend/post',function(req, res) {
+  res.json(req.body)
+})
+
+router.get('/extend/get',function(req, res) {
+  res.json({
+    msg: `extend get`
+  })
+})
+
+router.options('/extend/options',function(req, res) {
+  res.json({
+    msg: `extend options`
+  })
+})
+
+router.delete('/extend/delete',function(req, res) {
+  res.json({
+    msg: `extend delete`
+  })
+})
+
+router.head('/extend/head',function(req, res) {
+  res.json({
+    msg: `extend head`
+  })
+})
+
+router.put('/extend/put',function(req, res) {
+  res.json(req.body)
+})
+
+router.post('/extend/post',function(req, res) {
+  res.json(req.body)
+})
+
+router.patch('/extend/patch',function(req, res) {
+  res.json(req.body)
+})
+
 app.use(webpackDevMiddleware(compiler, {
   publicPath: '/__build__/',
   stats: {
