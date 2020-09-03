@@ -1,5 +1,12 @@
 import axios from '../../src/index'
 
+axios('/extend/post',{
+  method: 'post',
+  data: {
+    msg: 'hi function'
+  }
+})
+
 axios({
   url: '/extend/post',
   method: 'post',
