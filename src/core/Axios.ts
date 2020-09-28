@@ -48,7 +48,7 @@ export default class Axios implements AxiosInterface {
       promiseChain.push(interceptor)
     })
 
-    let promise = Promise.resolve(config)
+    let promise = Promise.resolve(config) as AxiosPromise
 
     while (promiseChain.length) {
       const { resolved, rejected } = promiseChain.shift()!
