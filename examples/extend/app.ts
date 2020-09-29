@@ -1,5 +1,6 @@
 import axios from '../../src/index'
 
+axios.defaults.headers.common.hehe = '5555'
 axios('/extend/post',{
   method: 'post',
   data: {
@@ -12,6 +13,9 @@ axios({
   method: 'post',
   data: {
     msg: 'hi'
+  },
+  headers:{
+    rr:'333'
   }
 })
 
