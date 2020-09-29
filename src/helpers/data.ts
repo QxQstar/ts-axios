@@ -1,8 +1,9 @@
 import { isPlainObject } from './util'
+import qs from 'qs'
 
 export function transformRequest(data: any): any {
   if (isPlainObject(data)) {
-    return JSON.stringify(data)
+    return qs.stringify(data)
   } else {
     return data
   }

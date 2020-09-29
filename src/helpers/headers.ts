@@ -15,7 +15,7 @@ export function processHeaders(headers: any, data: any): any {
   if (isPlainObject(data) && headers) {
     normalizedHeaderName(headers, 'Content-Type')
     if (!headers['Content-Type']) {
-      headers['Content-Type'] = 'application/json;charset=utf-8'
+      headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
     }
   }
 
